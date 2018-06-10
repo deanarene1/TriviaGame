@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     //start button
 
-    $("#timer").text("2:00");
+    $("#timer").text("1:30");
 
     var interval = setInterval(function () {
         var presentTime = $("#timer").text();
@@ -13,13 +13,13 @@ $(document).ready(function () {
             m = m - 1
         }
 
-        console.log(m);
-        console.log(s);
         $("#timer").text(m + ":" + s);
 
         if (m === "0" && s === "00") {
-            alert("Time's Up!");
             clearInterval(interval);
+            $("#timer").text("Time's Up!");
+            $(".soclassy").hide();
+            //sends to new page with inc/cor answers
 
         }
 
@@ -28,14 +28,29 @@ $(document).ready(function () {
 
 
     function checkSecond(sec) {
-            if (sec < 10 && sec >= 0) { sec = "0" + sec }; 
-            if (sec < 0) { sec = "59" };
-            return sec;
-        }
+        if (sec < 10 && sec >= 0) { sec = "0" + sec };
+        if (sec < 0) { sec = "59" };
+        return sec;
+    }
 
 
-    //opacity in background image
+    $(".btn").click(function () {
 
-    //done button sends you to page saying the amount of incorrect/correct answers
+        $(".question").hide();
 
-})
+        $(this).hide();
+
+        $(".classy").hide();
+
+        let correct = $("input:checked[value='ans']").length;
+        let incorrect = $("input:checked[value='inc']").length;
+
+
+        $(".correct").text("Correct Answers: " + correct);
+        $(".incorrect").text("Incorrect Answers: " + incorrect);
+
+
+    });
+
+
+});
