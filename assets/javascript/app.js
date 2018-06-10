@@ -19,7 +19,20 @@ $(document).ready(function () {
             clearInterval(interval);
             $("#timer").text("Time's Up!");
             $(".soclassy").hide();
-            //sends to new page with inc/cor answers
+            
+            $(".question").hide();
+
+            $(this).hide();
+            $(".btn").hide();
+    
+            $(".classy").hide();
+    
+            let correct = $("input:checked[value='ans']").length;
+            let incorrect = $("input:checked[value='inc']").length;
+    
+    
+            $(".correct").text("Correct Answers: " + correct);
+            $(".incorrect").text("Incorrect Answers: " + incorrect);
 
         }
 

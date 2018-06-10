@@ -7,6 +7,10 @@ body {
     opacity: 1.0;
 }
 
+p {
+    font-size:65px;
+}
+
 .question {
     margin-top: 25px;
 }
