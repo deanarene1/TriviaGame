@@ -1,9 +1,10 @@
 body {
     background-image: url("../images/background.jpg");
-    /* background: rgba(1.0); */
+    background: rgba(1.0);
 }
 
 .container-fluid {
     color: #fff;
     opacity: 1.0;
 }
+

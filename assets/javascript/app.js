@@ -1,49 +1,41 @@
 $(document).ready(function () {
 
+    //start button
 
+    $("#timer").text("2:00");
 
-    $("#timer").text("02:00");
-    var counter = (2 + ":" + 00);
-
-    function triviaStart() {
-        intervalId = setInterval(count, 1000);
-    }
-
-    function stop() {
-        clearInterval(intervalId);
-        alert("Times up!");
-    }
-
-    function count() {
-        time--;
-        var conversion = timeConverter(time);
-        $("#timer").text(conversion);
-
-    }
-
-    function timeConverter(t) {
-
-        var minutes = Math.floor(t / 60);
-        var seconds = t - (minutes * 60);
-
-        if (seconds < 10) {
-            seconds = "0" + seconds;
+    var interval = setInterval(function () {
+        var presentTime = $("#timer").text();
+        var timeArray = presentTime.split(/[:]+/);
+        var m = timeArray[0];
+        var s = checkSecond((timeArray[1] - 1));
+        if (s == 59) {
+            m = m - 1
         }
 
-        if (minutes === 0) {
-            minutes = "00";
+        console.log(m);
+        console.log(s);
+        $("#timer").text(m + ":" + s);
+
+        if (m === "0" && s === "00") {
+            alert("Time's Up!");
+            clearInterval(interval);
+
         }
-        else if (minutes < 10) {
-            minutes = "0" + minutes;
+
+    }, 1000);
+
+
+
+    function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) { sec = "0" + sec }; 
+            if (sec < 0) { sec = "59" };
+            return sec;
         }
 
-        return minutes + ":" + seconds;
-    }
 
-    //when timer ends
-    //tells you the amount of answers you got right or wrong
+    //opacity in background image
 
-    //when the SUBMIT button is clicked
-    //amount of correct and incorrect guesses comes up
+    //done button sends you to page saying the amount of incorrect/correct answers
 
 })
